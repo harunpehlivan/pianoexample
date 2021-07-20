@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Piano Example</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="app" @mousedown="puxandoNota = true" @mouseup="puxandoNota = false">
+  <div class="list">
+    <p>Musics</p>
+    <li v-for="music in musics">
+      {{ music.name }}
+      <div class="right">
+        <button @click="sandBoxie(music)">Play</button>
+        <button @click="train(music)">Train</button>
+      </div>
+    </li>
+  </div>
+  <div class="piano">
+    <div style="position: absolute; bottom: -42px; background: #151515; width: 90%;
+                padding: 10px;">
+      <i v-if="!record" style="font-size: 22px; color: #fff; cursor: pointer;" 
+         class="fas fa-record-vinyl" @click="recordOn"></i>
+      <i v-if="record" style="font-size: 22px; color: #fff; cursor: pointer;" 
+         class="far fa-stop-circle" @click="record = false"></i>
+      <i style="font-size: 22px; color: #fff; cursor: pointer;" class="fas fa-play" @click="playMyMusic" v-if="!playingMyMusic"></i>
+      <i  style="font-size: 22px; color: #fff; cursor: pointer;" v-if="playingMyMusic" class="fas fa-pause" @click="stopPlayingMusic"></i>
+    </div>
+    <h1 v-if="training" style="position: absolute; top: -80px;">
+      {{ musicTrain.name }}</h1>
+    <h1 v-if="playingSandBoxie" style="position: absolute; top: -80px;">
+      {{ tocandoSandoBoxie.name }}</h1>
+    <h1 v-if="playingMyMusic" style="position: absolute; top: -80px;">
+      Record music
+    </h1>
+    <div class="porcentagem" v-if="training || playingSandBoxie || playingMyMusic">
+    <div class="subprogress"
+           v-bind:style="{ width: percentTrain + '%' }"></div>
+    </div>
+    <div class="trainar" v-if="treinando">
+      <div class="center">
+        <h1>Acertos: {{ acertosTrain }}</h1>
+        <h1>Erros: {{ errorTrain }}</h1>
+        <br>
+        <button @click="continuar">Ok</button>
+      </div>
+    </div>
+    <a class="key" v-for="key in keys" @mousedown="play(key)" @mouseup="puxandoNota = false" @mouseenter="puxandoNotaA(key)" :class="{press: key.playing}">
+    <span :class="{train: key.key == proximoKeyTrain.key}">
+    <div class="tecla">
+      <div class="proximoTecla" v-if="key.key == proximoTecla.key"></div>
+      <h1 style="position: absolute;
+                 font-size: 100%;
+                 bottom: 0px;
+                 left: 26%;" > {{ key.key }} </h1>
+      <h1 style="position: absolute;
+                 font-size: 100%;
+                 top: 10px;
+                 left: 26%;"> {{ key.sound }} </h1>
+    </div>
+    </span>
+    </a>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.4.84/Tone.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

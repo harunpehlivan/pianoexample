@@ -1,0 +1,157 @@
+.piano{
+  width: 1200px;
+  height: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.85);
+  top: 500px;
+  position: absolute;
+  perspective: 250px;
+}
+
+li{
+  color: #fff;
+  list-style: none;
+  background: rgba(0,0,0,.30);
+  padding: 10px;
+  margin: 5px;
+}
+
+.right button{
+  border: none;
+  outline: none;
+  position: relative;
+  top: -30px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.right{
+  position: absolute;
+  right: 0px;
+}
+
+.list p{
+  color: #fff;
+  padding: 10px;
+}
+
+.list{
+  width: 100%;
+  max-width: 830px;
+  position: relative;
+  margin: 40px auto;
+}
+
+body{
+  background: #34454f;
+    font: 20px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+    color: #C1B8B7;
+    overflow: hidden;
+}
+
+*{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.tecla{
+  position: relative;
+  display: inline-table;
+  height: calc(100% - 3px);
+  width: 38.5px;
+  background: #d2d5de;
+  box-shadow: 2px 3px 2px rgba(0,0,0,.50);
+  margin-left: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: no-wrap;
+  padding: 17px;
+  transition: 0.2s;
+  transform: translate(200%, 0%) skew(-10deg);
+  z-index: 1;
+}
+
+.press .tecla::before{
+  content: '';
+  width: 18px;
+  height: 100%;
+  position: absolute;
+  right: -17px;
+  top: 0px;
+  background: #000;
+  z-index: -1;
+}
+
+.press .tecla{
+  transition: 0.1s;
+  transform: translate(200%, 0%) translateY(0px) skew(-5deg);
+  background: #f0b980;
+  height: calc(100% - 7px);
+  box-shadow: 1px 3px 1px rgba(0,0,0,.30);
+}
+
+.tecla h1{
+  color: rgba(0,0,0,.50);
+  font-size: 18px;
+}
+
+.train .tecla{
+  background: #e45252;
+}
+
+.proximoTecla{
+    left: 0px;
+    position: absolute;
+    background: #03A9F4;
+    top: 0px;
+    width: 100%;
+    height: 10px;
+}
+
+.trainar{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.50);
+  z-index: 1000;
+  left: 0px;
+}
+
+.trainar .center{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: #fff;
+}
+
+.trainar .center button{
+  width: 100%;
+  height: auto;
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+}
+
+.porcentagem{
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  height: 6px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.subprogress{
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background: #3F51B5;
+  transition: 0.4s;
+}
